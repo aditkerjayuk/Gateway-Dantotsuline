@@ -1,0 +1,423 @@
+{
+  "version": 2,
+  "models": {
+    "factoryBase": {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "visible": true,
+      "wireframe": false
+    },
+    "machinery": {
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "visible": true,
+      "wireframe": false
+    }
+  },
+  "devices": [
+    {
+      "id": "GW-001",
+      "state": "default",
+      "position": [
+        25.940036,
+        1.6,
+        54.348006
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        8.1,
+        8.1,
+        8.1
+      ],
+      "visible": true,
+      "wireframe": false
+    },
+    {
+      "id": "GW-002",
+      "state": "default",
+      "position": [
+        48.951411,
+        1.6,
+        32.12968
+      ],
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "scale": [
+        8.1,
+        8.1,
+        8.1
+      ],
+      "visible": true,
+      "wireframe": false
+    },
+    {
+      "id": "GW-003",
+      "state": "default",
+      "position": [
+        88.499735,
+        1.6,
+        70.60982
+      ],
+      "rotation": [
+        0,
+        180,
+        0
+      ],
+      "scale": [
+        8.1,
+        8.1,
+        8.1
+      ],
+      "visible": true,
+      "wireframe": false
+    },
+    {
+      "id": "GW-004",
+      "state": "default",
+      "position": [
+        80.423681,
+        1.6,
+        123.501589
+      ],
+      "rotation": [
+        0,
+        90,
+        0
+      ],
+      "scale": [
+        8.1,
+        8.1,
+        8.1
+      ],
+      "visible": true,
+      "wireframe": false
+    },
+    {
+      "id": "GW-005",
+      "state": "default",
+      "position": [
+        -15.061561,
+        1.6,
+        54.839121
+      ],
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "scale": [
+        8.1,
+        8.1,
+        8.1
+      ],
+      "visible": true,
+      "wireframe": false
+    },
+    {
+      "id": "GW-006",
+      "state": "default",
+      "position": [
+        -11.451909,
+        1.6,
+        54.841674
+      ],
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "scale": [
+        8.1,
+        8.1,
+        8.1
+      ],
+      "visible": true,
+      "wireframe": false
+    },
+    {
+      "id": "GW-007",
+      "state": "default",
+      "position": [
+        -9.613209,
+        1.6,
+        54.786614
+      ],
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "scale": [
+        8.1,
+        8.1,
+        8.1
+      ],
+      "visible": true,
+      "wireframe": false
+    },
+    {
+      "id": "GW-008",
+      "state": "default",
+      "position": [
+        -15.015826,
+        1.6,
+        56.663634
+      ],
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "scale": [
+        8.1,
+        8.1,
+        8.1
+      ],
+      "visible": true,
+      "wireframe": false
+    },
+    {
+      "id": "GW-009",
+      "state": "default",
+      "position": [
+        -13.258649,
+        1.6,
+        54.834268
+      ],
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "scale": [
+        8.1,
+        8.1,
+        8.1
+      ],
+      "visible": true,
+      "wireframe": false
+    },
+    {
+      "id": "GW-010",
+      "state": "default",
+      "position": [
+        -13.193326,
+        1.6,
+        56.663634
+      ],
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "scale": [
+        8.1,
+        8.1,
+        8.1
+      ],
+      "visible": true,
+      "wireframe": false
+    },
+    {
+      "id": "GW-011",
+      "state": "default",
+      "position": [
+        -11.370826,
+        1.6,
+        56.663634
+      ],
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "scale": [
+        8.1,
+        8.1,
+        8.1
+      ],
+      "visible": true,
+      "wireframe": false
+    },
+    {
+      "id": "GW-012",
+      "state": "default",
+      "position": [
+        -9.548326,
+        1.6,
+        56.663634
+      ],
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "scale": [
+        8.1,
+        8.1,
+        8.1
+      ],
+      "visible": true,
+      "wireframe": false
+    },
+    {
+      "id": "GW-013",
+      "state": "default",
+      "position": [
+        -14.982979,
+        1.6,
+        58.610795
+      ],
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "scale": [
+        8.1,
+        8.1,
+        8.1
+      ],
+      "visible": true,
+      "wireframe": false
+    },
+    {
+      "id": "GW-014",
+      "state": "default",
+      "position": [
+        -13.160479,
+        1.6,
+        58.610795
+      ],
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "scale": [
+        8.1,
+        8.1,
+        8.1
+      ],
+      "visible": true,
+      "wireframe": false
+    },
+    {
+      "id": "GW-015",
+      "state": "default",
+      "position": [
+        -11.337979,
+        1.6,
+        58.610795
+      ],
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "scale": [
+        8.1,
+        8.1,
+        8.1
+      ],
+      "visible": true,
+      "wireframe": false
+    },
+    {
+      "id": "GW-016",
+      "state": "default",
+      "position": [
+        -9.515479,
+        1.6,
+        58.610795
+      ],
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "scale": [
+        8.1,
+        8.1,
+        8.1
+      ],
+      "visible": true,
+      "wireframe": false
+    },
+    {
+      "id": "GW-017",
+      "state": "default",
+      "position": [
+        -13.148633,
+        1.6,
+        60.412621
+      ],
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "scale": [
+        8.1,
+        8.1,
+        8.1
+      ],
+      "visible": true,
+      "wireframe": false
+    },
+    {
+      "id": "GW-018",
+      "state": "default",
+      "position": [
+        -11.326133,
+        1.6,
+        60.412621
+      ],
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "scale": [
+        8.1,
+        8.1,
+        8.1
+      ],
+      "visible": true,
+      "wireframe": false
+    }
+  ]
+}

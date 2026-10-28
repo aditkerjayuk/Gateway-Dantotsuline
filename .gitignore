@@ -1,0 +1,16 @@
+# Visual Studio / .NET Core
+[Oo]bj/
+[Bb]in/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Environment / Secrets
+appsettings.Development.json
+
+appsettings.json
+wwwroot/models/*
+
+
