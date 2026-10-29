@@ -43,11 +43,11 @@
   "devices": [
     {
       "id": "GW-001",
-      "state": "default",
+      "state": "active",
       "position": [
-        25.940036,
+        42.21341,
         1.6,
-        54.348006
+        89.677724
       ],
       "rotation": [
         0,
@@ -64,15 +64,15 @@
     },
     {
       "id": "GW-002",
-      "state": "default",
+      "state": "active",
       "position": [
-        48.951411,
+        13.013312,
         1.6,
-        32.12968
+        105.576724
       ],
       "rotation": [
         0,
-        90,
+        180,
         0
       ],
       "scale": [
@@ -85,11 +85,11 @@
     },
     {
       "id": "GW-003",
-      "state": "default",
+      "state": "active",
       "position": [
-        88.499735,
+        66.697468,
         1.6,
-        70.60982
+        71.3256
       ],
       "rotation": [
         0,
@@ -106,11 +106,74 @@
     },
     {
       "id": "GW-004",
-      "state": "default",
+      "state": "active",
       "position": [
-        80.423681,
+        42.65052,
         1.6,
-        123.501589
+        -0.762367
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        8.1,
+        8.1,
+        8.1
+      ],
+      "visible": true,
+      "wireframe": false
+    },
+    {
+      "id": "GW-005",
+      "state": "active",
+      "position": [
+        88.818032,
+        1.6,
+        15.957662
+      ],
+      "rotation": [
+        0,
+        180,
+        0
+      ],
+      "scale": [
+        8.1,
+        8.1,
+        8.1
+      ],
+      "visible": true,
+      "wireframe": false
+    },
+    {
+      "id": "GW-006",
+      "state": "active",
+      "position": [
+        24.386411,
+        1.6,
+        33.913957
+      ],
+      "rotation": [
+        0,
+        180,
+        0
+      ],
+      "scale": [
+        8.1,
+        8.1,
+        8.1
+      ],
+      "visible": true,
+      "wireframe": false
+    },
+    {
+      "id": "GW-007",
+      "state": "active",
+      "position": [
+        96.13005,
+        1.6,
+        51.731415
       ],
       "rotation": [
         0,
@@ -126,79 +189,16 @@
       "wireframe": false
     },
     {
-      "id": "GW-005",
-      "state": "default",
-      "position": [
-        -15.061561,
-        1.6,
-        54.839121
-      ],
-      "rotation": [
-        0,
-        -90,
-        0
-      ],
-      "scale": [
-        8.1,
-        8.1,
-        8.1
-      ],
-      "visible": true,
-      "wireframe": false
-    },
-    {
-      "id": "GW-006",
-      "state": "default",
-      "position": [
-        -11.451909,
-        1.6,
-        54.841674
-      ],
-      "rotation": [
-        0,
-        -90,
-        0
-      ],
-      "scale": [
-        8.1,
-        8.1,
-        8.1
-      ],
-      "visible": true,
-      "wireframe": false
-    },
-    {
-      "id": "GW-007",
-      "state": "default",
-      "position": [
-        -9.613209,
-        1.6,
-        54.786614
-      ],
-      "rotation": [
-        0,
-        -90,
-        0
-      ],
-      "scale": [
-        8.1,
-        8.1,
-        8.1
-      ],
-      "visible": true,
-      "wireframe": false
-    },
-    {
       "id": "GW-008",
-      "state": "default",
+      "state": "active",
       "position": [
-        -15.015826,
+        0.647262,
         1.6,
-        56.663634
+        35.924758
       ],
       "rotation": [
         0,
-        -90,
+        0,
         0
       ],
       "scale": [
@@ -211,15 +211,15 @@
     },
     {
       "id": "GW-009",
-      "state": "default",
+      "state": "active",
       "position": [
-        -13.258649,
+        38.539765,
         1.6,
-        54.834268
+        123.750083
       ],
       "rotation": [
         0,
-        -90,
+        180,
         0
       ],
       "scale": [
@@ -232,15 +232,15 @@
     },
     {
       "id": "GW-010",
-      "state": "default",
+      "state": "active",
       "position": [
-        -13.193326,
+        69.434604,
         1.6,
-        56.663634
+        123.888272
       ],
       "rotation": [
         0,
-        -90,
+        180,
         0
       ],
       "scale": [
@@ -253,15 +253,15 @@
     },
     {
       "id": "GW-011",
-      "state": "default",
+      "state": "active",
       "position": [
-        -11.370826,
+        5.801603,
         1.6,
-        56.663634
+        69.469513
       ],
       "rotation": [
         0,
-        -90,
+        90,
         0
       ],
       "scale": [
@@ -274,15 +274,15 @@
     },
     {
       "id": "GW-012",
-      "state": "default",
+      "state": "active",
       "position": [
-        -9.548326,
+        19.888119,
         1.6,
-        56.663634
+        53.619987
       ],
       "rotation": [
         0,
-        -90,
+        0,
         0
       ],
       "scale": [
@@ -295,15 +295,15 @@
     },
     {
       "id": "GW-013",
-      "state": "default",
+      "state": "active",
       "position": [
-        -14.982979,
+        11.161224,
         1.6,
-        58.610795
+        35.248342
       ],
       "rotation": [
         0,
-        -90,
+        0,
         0
       ],
       "scale": [
@@ -316,15 +316,15 @@
     },
     {
       "id": "GW-014",
-      "state": "default",
+      "state": "active",
       "position": [
-        -13.160479,
+        89.666794,
         1.6,
-        58.610795
+        34.085603
       ],
       "rotation": [
         0,
-        -90,
+        180,
         0
       ],
       "scale": [
@@ -337,15 +337,15 @@
     },
     {
       "id": "GW-015",
-      "state": "default",
+      "state": "active",
       "position": [
-        -11.337979,
+        5.699944,
         1.6,
-        58.610795
+        141.354607
       ],
       "rotation": [
         0,
-        -90,
+        90,
         0
       ],
       "scale": [
@@ -358,15 +358,15 @@
     },
     {
       "id": "GW-016",
-      "state": "default",
+      "state": "active",
       "position": [
-        -9.515479,
+        90.588543,
         1.6,
-        58.610795
+        153.666883
       ],
       "rotation": [
         0,
-        -90,
+        180,
         0
       ],
       "scale": [
@@ -379,15 +379,15 @@
     },
     {
       "id": "GW-017",
-      "state": "default",
+      "state": "active",
       "position": [
-        -13.148633,
+        2.411438,
         1.6,
-        60.412621
+        35.925498
       ],
       "rotation": [
         0,
-        -90,
+        0,
         0
       ],
       "scale": [
@@ -400,15 +400,15 @@
     },
     {
       "id": "GW-018",
-      "state": "default",
+      "state": "active",
       "position": [
-        -11.326133,
+        71.527313,
         1.6,
-        60.412621
+        52.113577
       ],
       "rotation": [
         0,
-        -90,
+        180,
         0
       ],
       "scale": [
