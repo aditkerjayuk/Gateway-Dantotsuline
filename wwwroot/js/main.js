@@ -31,6 +31,29 @@ function gatewayDeviceId(gateway) {
 }
 
 let gatewaySyncInProgress = false;
+let gatewayApiReachable = null;     // null = belum pernah dicoba
+
+// Status box hanya boleh hijau kalau API benar-benar bilang ONLINE.
+// Saat data belum tersedia / API gagal, semua box dikembalikan ke state netral (abu-abu).
+function markDevicesUnknown(statusText = 'menunggu data API', statusClass = '') {
+  for (const [key, entry] of Object.entries(registry)) {
+    if (!entry.device) continue;
+    dm.setState(key, 'default', { persist: false });
+    mc.setStatus(key, statusText, statusClass);
+  }
+}
+
+function setGatewayReachable(reachable, reason = '') {
+  const previous = gatewayApiReachable;
+  if (previous === reachable) return;
+  gatewayApiReachable = reachable;
+  if (!reachable) {
+    notify(`API gateway tidak terhubung${reason ? ` (${reason})` : ''}. Box ditampilkan netral sampai data tersedia.`, 'error');
+  } else if (previous === false) {
+    notify('API gateway terhubung kembali. Status box diperbarui.');
+  }
+}
+
 async function syncGatewaysWith3D() {
   if (gatewaySyncInProgress) return;
   gatewaySyncInProgress = true;
@@ -40,6 +63,9 @@ async function syncGatewaysWith3D() {
     const gateways = await response.json();
     if (!Array.isArray(gateways)) throw new Error('Gateway response is not a list');
 
+    setGatewayReachable(true);
+    const seen = new Set();
+
     gateways.forEach(gateway => {
       const id = gatewayDeviceId(gateway);
       const key = id && `dev_${id}`;
@@ -48,13 +74,10 @@ async function syncGatewaysWith3D() {
         console.warn(`Tidak ada box smart device untuk gateway ${id ?? gateway.TOPIC ?? gateway.ID ?? '(tanpa ID)'}.`);
         return;
       }
+      seen.add(key);
 
       const status = String(gateway.STATUS ?? gateway.status ?? '').trim().toUpperCase();
-      const state = status === 'ONLINE' ? 'active' : status === 'OFFLINE' ? 'inactive' : null;
-      if (!state) {
-        console.warn(`Status API tidak dikenal untuk ${id}: ${status || '(kosong)'}.`);
-        return;
-      }
+      const state = status === 'ONLINE' ? 'active' : status === 'OFFLINE' ? 'inactive' : 'default';
 
       const data = {
         id: gateway.ID ?? gateway.id,
@@ -66,10 +89,19 @@ async function syncGatewaysWith3D() {
       };
       entry.root.userData.gateway = data;
       dm.setState(key, state, { persist: false });
-      mc.setStatus(key, status, status === 'ONLINE' ? 'ok' : 'fail');
+      mc.setStatus(key, status || 'status kosong', status === 'ONLINE' ? 'ok' : status === 'OFFLINE' ? 'fail' : '');
       mc.setGatewayData(key, data);
     });
+
+    // Box yang tidak muncul di response API juga tidak boleh tetap hijau.
+    for (const [key, entry] of Object.entries(registry)) {
+      if (!entry.device || seen.has(key)) continue;
+      dm.setState(key, 'default', { persist: false });
+      mc.setStatus(key, 'tidak ada di API', '');
+    }
   } catch (error) {
+    markDevicesUnknown('API tidak terhubung', 'fail');
+    setGatewayReachable(false, error.message);
     console.error('Gagal mengambil data gateway:', error);
   } finally {
     gatewaySyncInProgress = false;
@@ -176,6 +208,9 @@ $('reset-active').onclick = () => {
 $('reset-all').onclick = () => {
   mc.applyAll(initial);
   initial.devices ? dm.replaceAll(initial.devices) : dm.resetAll();
+  markDevicesUnknown();                 // status dari API, bukan dari file konfigurasi
+  persist();
+  void syncGatewaysWith3D();            // langsung ambil status terbaru
 };
 
 function setMode(mode) {
@@ -208,7 +243,11 @@ $('import-file').onchange = async e => {
     const r = await readConfigFile(file, modelKeys);
     if (!r.ok) return notify(`Impor gagal: ${r.errors.join(' ')}`, 'error');
     mc.applyAll(r.value);
-    if (r.value.devices) dm.replaceAll(r.value.devices);
+    if (r.value.devices) {
+      dm.replaceAll(r.value.devices);
+      markDevicesUnknown();
+      void syncGatewaysWith3D();
+    }
     notify(`Konfigurasi diimpor (${Object.keys(r.value.models).join(', ') || 'tanpa model'}${r.value.devices ? `; ${r.value.devices.length} box` : ''}).`);
   } catch (err) { notify(err.message, 'error'); }
 };
@@ -314,7 +353,7 @@ view.renderer.domElement.addEventListener('pointerup', e => {
   const savedSession = loadSession();
 
   try {
-    const raw = await fetchConfig('config/assembly.json');
+    const raw = await fetchConfig('/config/assembly.json');
     if (raw) {
       const r = validateConfig(raw, modelKeys);
       if (r.ok) initial = mergeConfig(initial, r.value);
@@ -343,6 +382,9 @@ view.renderer.domElement.addEventListener('pointerup', e => {
   }
   if (list.length) dm.replaceAll(list); else seedDevice();
   if (sess) { mc.applyAll(sess); notify('Penyesuaian dari sesi sebelumnya dipulihkan. Reset semua mengembalikan ke assembly.json.'); }
+
+  // Jangan percaya state "active" dari file/sesi lama: status asli datang dari API.
+  markDevicesUnknown();
 
   refreshSelect();
   persist();

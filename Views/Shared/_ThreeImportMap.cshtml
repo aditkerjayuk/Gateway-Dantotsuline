@@ -1,0 +1,3 @@
+@* Import map Three.js lokal. Dirender lewat Html.Raw karena ScriptTagHelper .NET 10
+   menghapus atribut type="importmap" saat tag berisi konten inline. *@
+@Html.Raw("<script type=\"importmap\">{\"imports\":{\"three\":\"/lib/three/build/three.module.js\",\"three/addons/\":\"/lib/three/examples/jsm/\"}}</script>")

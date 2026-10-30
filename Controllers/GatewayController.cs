@@ -1,28 +1,28 @@
 using Gateway_Dantotsuline.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace Gateway_Dantotsuline.Controllers
 {
     public class GatewayController : Controller
     {
         private readonly HttpClient _httpClient;
-        private readonly IConfiguration _configuration;
+        private readonly GatewayApiOptions _api;
 
-        public GatewayController(HttpClient httpClient, IConfiguration configuration)
+        public GatewayController(IHttpClientFactory httpClientFactory, IOptions<GatewayApiOptions> apiOptions)
         {
-            _httpClient = httpClient;
-            _configuration = configuration;
+            _httpClient = httpClientFactory.CreateClient("GatewayApi");
+            _api = apiOptions.Value;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Editor()
         {
             var requestBody = new GatewayRequest
             {
-                Token = _configuration["TOKEN"]
+                Token = _api.Token
             };
 
-            string url = "http://10.146.124.150:5000/api/gateways";
+            string url = _api.GatewaysUrl;
 
             try
             {
@@ -63,14 +63,21 @@ namespace Gateway_Dantotsuline.Controllers
             return View(new List<GatewayDto>());
         }
 
+        // Halaman monitoring read-only. Data gateway diambil oleh browser lewat
+        // GetGatewayJson supaya halaman tetap bisa dibuka walau API sedang lambat.
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         public async Task<IActionResult> GetGatewayJson()
         {
             var requestBody = new GatewayRequest
             {
-                Token = _configuration["TOKEN"]
+                Token = _api.Token
             };
 
-            string url = "http://10.146.124.150:5000/api/gateways";
+            string url = _api.GatewaysUrl;
 
             try
             {
@@ -91,7 +98,9 @@ namespace Gateway_Dantotsuline.Controllers
                 Console.WriteLine($"Terjadi kesalahan: {ex.Message}");
             }
 
-            return Json(new List<GatewayDto>());
+            // Beri status error yang jelas supaya frontend bisa menandai box sebagai
+            // "tidak diketahui", bukan berpura-pura API mengembalikan daftar kosong.
+            return StatusCode(StatusCodes.Status502BadGateway, new { message = "Gagal mengambil data gateway dari API." });
         }
     }
 }

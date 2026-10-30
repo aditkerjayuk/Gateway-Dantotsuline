@@ -43,7 +43,7 @@
   "devices": [
     {
       "id": "GW-001",
-      "state": "active",
+      "state": "default",
       "position": [
         42.21341,
         1.6,
@@ -64,7 +64,7 @@
     },
     {
       "id": "GW-002",
-      "state": "active",
+      "state": "default",
       "position": [
         13.013312,
         1.6,
@@ -85,7 +85,7 @@
     },
     {
       "id": "GW-003",
-      "state": "active",
+      "state": "default",
       "position": [
         66.697468,
         1.6,
@@ -106,7 +106,7 @@
     },
     {
       "id": "GW-004",
-      "state": "active",
+      "state": "default",
       "position": [
         42.65052,
         1.6,
@@ -127,7 +127,7 @@
     },
     {
       "id": "GW-005",
-      "state": "active",
+      "state": "default",
       "position": [
         88.818032,
         1.6,
@@ -148,7 +148,7 @@
     },
     {
       "id": "GW-006",
-      "state": "active",
+      "state": "default",
       "position": [
         24.386411,
         1.6,
@@ -169,7 +169,7 @@
     },
     {
       "id": "GW-007",
-      "state": "active",
+      "state": "default",
       "position": [
         96.13005,
         1.6,
@@ -190,7 +190,7 @@
     },
     {
       "id": "GW-008",
-      "state": "active",
+      "state": "default",
       "position": [
         0.647262,
         1.6,
@@ -211,7 +211,7 @@
     },
     {
       "id": "GW-009",
-      "state": "active",
+      "state": "default",
       "position": [
         38.539765,
         1.6,
@@ -232,7 +232,7 @@
     },
     {
       "id": "GW-010",
-      "state": "active",
+      "state": "default",
       "position": [
         69.434604,
         1.6,
@@ -253,7 +253,7 @@
     },
     {
       "id": "GW-011",
-      "state": "active",
+      "state": "default",
       "position": [
         5.801603,
         1.6,
@@ -274,7 +274,7 @@
     },
     {
       "id": "GW-012",
-      "state": "active",
+      "state": "default",
       "position": [
         19.888119,
         1.6,
@@ -295,7 +295,7 @@
     },
     {
       "id": "GW-013",
-      "state": "active",
+      "state": "default",
       "position": [
         11.161224,
         1.6,
@@ -316,7 +316,7 @@
     },
     {
       "id": "GW-014",
-      "state": "active",
+      "state": "default",
       "position": [
         89.666794,
         1.6,
@@ -337,7 +337,7 @@
     },
     {
       "id": "GW-015",
-      "state": "active",
+      "state": "default",
       "position": [
         5.699944,
         1.6,
@@ -358,7 +358,7 @@
     },
     {
       "id": "GW-016",
-      "state": "active",
+      "state": "default",
       "position": [
         90.588543,
         1.6,
@@ -379,7 +379,7 @@
     },
     {
       "id": "GW-017",
-      "state": "active",
+      "state": "default",
       "position": [
         2.411438,
         1.6,
@@ -400,7 +400,7 @@
     },
     {
       "id": "GW-018",
-      "state": "active",
+      "state": "default",
       "position": [
         71.527313,
         1.6,

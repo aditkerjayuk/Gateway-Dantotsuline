@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Gateway Monitoring</title>
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('sidebar-collapsed') === '1') {
+                    document.documentElement.classList.add('sidebar-collapsed');
+                }
+            } catch (e) { }
+        })();
+    </script>
+    @await Html.PartialAsync("_ThreeImportMap")
+    <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/preview.css" asp-append-version="true" />
+</head>
+<body class="preview-page">
+    <partial name="_Sidebar" />
+    <div class="app-content app-content--full">
+        @RenderBody()
+    </div>
+    <script src="~/js/sidebar.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

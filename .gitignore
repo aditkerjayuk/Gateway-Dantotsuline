@@ -7,10 +7,11 @@
 *.userosscache
 *.sln.docstates
 
-# Environment / Secrets
+# Environment / Secrets (appsettings.json ikut Git, isinya tanpa secret)
 appsettings.Development.json
+appsettings.*.local.json
 
-appsettings.json
+# Model 3D besar tidak disimpan di Git (lihat README bagian "Model 3D")
 wwwroot/models/*
 
 

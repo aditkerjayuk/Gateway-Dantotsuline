@@ -1,0 +1,22 @@
+{
+  "gateways": {
+    "GW-001": { "name": "GATEWAY 01", "line": "DR-5", "hostname": "", "extra": [] },
+    "GW-002": { "name": "GATEWAY 02", "line": "DL-1", "hostname": "", "extra": [] },
+    "GW-003": { "name": "GATEWAY 03", "line": "FL-7", "hostname": "D-FAB-DOZER3", "extra": [] },
+    "GW-004": { "name": "GATEWAY 04", "line": "IR-5", "hostname": "D-FAB-HDO1", "extra": [] },
+    "GW-005": { "name": "GATEWAY 05", "line": "IL-10", "hostname": "D-FAB-HDO2", "extra": [] },
+    "GW-006": { "name": "GATEWAY 06", "line": "HR-3", "hostname": "D-FAB-HDO3", "extra": [] },
+    "GW-007": { "name": "GATEWAY 07", "line": "PAINTING", "hostname": "D-FAB-PAINTING", "extra": [] },
+    "GW-008": { "name": "GATEWAY 08", "line": "", "hostname": "", "extra": [] },
+    "GW-009": { "name": "GATEWAY 09", "line": "CL-4", "hostname": "", "extra": [] },
+    "GW-010": { "name": "GATEWAY 10", "line": "CL-8", "hostname": "D-FAB-BOOM-2", "extra": [] },
+    "GW-011": { "name": "GATEWAY 11", "line": "FL-1", "hostname": "", "extra": [] },
+    "GW-012": { "name": "GATEWAY 12", "line": "FR-2", "hostname": "", "extra": [] },
+    "GW-013": { "name": "GATEWAY 13", "line": "GR-1", "hostname": "", "extra": [] },
+    "GW-014": { "name": "GATEWAY 14", "line": "HL-10", "hostname": "D-FAB-REVO1", "extra": [] },
+    "GW-015": { "name": "GATEWAY 15", "line": "BL-1", "hostname": "", "extra": [] },
+    "GW-016": { "name": "GATEWAY 16", "line": "A-10", "hostname": "D-FAB-LORI", "extra": [] },
+    "GW-017": { "name": "GATEWAY 17", "line": "", "hostname": "", "extra": [] },
+    "GW-018": { "name": "GATEWAY 18", "line": "GL-8", "hostname": "D-FAB-REVO2", "extra": [] }
+  }
+}

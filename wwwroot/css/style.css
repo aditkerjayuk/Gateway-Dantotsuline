@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
 :root {
   --bg: #f0f0f0;
   --panel: #23272d;
@@ -8,7 +10,7 @@
   --bad: #e5645a;
   --ok: #6cc08b;
   --warn: #e0a030;
-  font-family: "Segoe UI", system-ui, sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-size: 13px;
   color: var(--text);
 }
@@ -68,7 +70,6 @@ button,
 select,
 input[type=number],
 .btn {
-  font: inherit;
   color: var(--text);
   background: #2d333a;
   border: 1px solid var(--line);
@@ -316,6 +317,13 @@ dl.info dd.warn {
 
 #messages p.error {
   border-left-color: var(--bad);
+}
+
+/* Baris gateway yang dituju dari callout (/Gateway#gw-GW-001). */
+table tbody tr:target {
+  background: #fff8e1;
+  outline: 2px solid #ffc82f;
+  outline-offset: -2px;
 }
 
 @media (max-width: 800px) {

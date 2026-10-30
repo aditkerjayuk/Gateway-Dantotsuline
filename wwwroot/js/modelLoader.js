@@ -4,9 +4,10 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 
 // Ubah nama/path file di sini jika perlu.
+// Path absolut (diawali "/") supaya tetap benar walau halaman dibuka lewat /Gateway/Index.
 export const MODELS = {
-  factoryBase: { label: 'Factory Base', file: 'models/3d-fabrication-base.glb', color: 0x5bb0d6 },
-  machinery:   { label: 'Machinery',    file: 'models/3d-fabrication-machinery.glb',    color: 0xe0a030 },
+  factoryBase: { label: 'Factory Base', file: '/models/3d-fabrication-base.glb', color: 0x5bb0d6 },
+  machinery:   { label: 'Machinery',    file: '/models/3d-fabrication-machinery.glb',    color: 0xe0a030 },
 };
 
 // key -> { key, label, file, color, root, content, status, error, original }
@@ -14,7 +15,8 @@ export const MODELS = {
 export const registry = {};
 
 const loader = new GLTFLoader();
-loader.setDRACOLoader(new DRACOLoader().setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/'));
+// Decoder Draco ikut di-vendor di wwwroot/lib/draco (tidak lagi bergantung pada gstatic.com).
+loader.setDRACOLoader(new DRACOLoader().setDecoderPath('/lib/draco/'));
 loader.setMeshoptDecoder(MeshoptDecoder);
 
 export function createEntries(scene) {

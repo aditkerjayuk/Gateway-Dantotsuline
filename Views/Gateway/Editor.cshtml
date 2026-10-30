@@ -1,0 +1,149 @@
+@model IEnumerable<GatewayDto>
+
+@{
+    ViewData["Title"] = "Data Gateway";
+}
+
+<div class="container mt-4">
+    <div id="toolbar" role="toolbar" aria-label="Kontrol scene 3D">
+        <strong class="title">Model aktif</strong>
+        <div class="group">
+            <select id="active-model" aria-label="Pilih model aktif"></select>
+            <button type="button" id="reset-active">Reset model</button>
+            <button type="button" id="reset-all">Reset semua</button>
+        </div>
+        <div class="group">
+            <span>Mode:</span>
+            <button type="button" data-mode="translate" aria-pressed="true" title="Pindah (W)">Pindah</button>
+            <button type="button" data-mode="rotate" aria-pressed="false" title="Rotasi (E)">Rotasi</button>
+            <button type="button" data-mode="scale" aria-pressed="false" title="Skala (R)">Skala</button>
+            <label><input type="checkbox" id="gizmo" checked> Gizmo</label>
+        </div>
+        <div class="group">
+            <button type="button" id="fit">Fit model</button>
+            <button type="button" id="focus-active" title="Fokus ke objek aktif (F)">Fokus objek</button>
+            <button type="button" id="reset-cam">Reset kamera</button>
+            <label><input type="checkbox" id="grid" checked> Grid</label>
+            <label><input type="checkbox" id="axes" checked> Sumbu</label>
+            <label>Latar
+                <select id="bg" aria-label="Warna latar">
+                    <option value="dark">Gelap</option>
+                    <option value="light">Terang</option>
+                </select>
+            </label>
+        </div>
+        <div class="group">
+            <button type="button" id="export">Ekspor konfigurasi</button>
+            <button type="button" id="import">Impor konfigurasi</button>
+            <input type="file" id="import-file" accept=".json,application/json" hidden>
+            <button type="button" id="place-box" aria-pressed="false">Tempatkan box</button>
+            <button type="button" id="clone-box">Duplikat box</button>
+        </div>
+    </div>
+
+    @* 3D Scene *@
+    <div id="scene-container">
+        <div id="viewport">
+            <div id="loading">
+                <h2>Memuat model</h2>
+                <div class="row" data-load="factoryBase"><span>Factory Base</span><progress max="100"
+                                                                                                value="0"></progress><em>menunggu</em></div>
+                    <div class="row" data-load="machinery"><span>Machinery</span><progress max="100"
+                                                                                               value="0"></progress><em>menunggu</em></div>
+                    </div>
+                    <div id="stats"></div>
+                </div>
+
+                <aside id="sidebar">
+                    <div id="model-panels"></div>
+
+                    <section class="panel plain">
+                        <h2>Pemeriksaan keselarasan</h2>
+                        <dl class="info" id="align">
+                            <dt>Status</dt>
+                            <dd>Tersedia setelah kedua model dimuat.</dd>
+                        </dl>
+                    </section>
+
+                    <section class="panel plain">
+                        <h2>Debug dan sesi</h2>
+                        <div class="checks">
+                            <label><input type="checkbox" id="autosave" checked> Auto-save sesi (sessionStorage)</label>
+                            <label><input type="checkbox" id="logdepth"> Log depth buffer (muat ulang halaman)</label>
+                        </div>
+                        <div class="clip">
+                            <label>Near <input type="number" id="near" step="any" min="0"></label>
+                            <label>Far <input type="number" id="far" step="any" min="0"></label>
+                        </div>
+                    </section>
+
+                    <section class="panel plain">
+                        <h2>Debug fit kamera</h2>
+                        <p>Atur kamera dengan drag dan scroll, lalu salin semua nilai ini dan kirimkan.</p>
+                        <pre id="camera-fit-debug"></pre>
+                        <button type="button" id="copy-camera-fit-debug">Salin semua nilai</button>
+                    </section>
+
+                    <div id="messages" aria-live="polite"></div>
+                </aside>
+            </div>
+
+
+            <h2>Daftar Gateway Perangkat</h2>
+            <hr />
+
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nama Gateway</th>
+                        <th>IP Address</th>
+                        <th>Topic</th>
+                        <th>Status</th>
+                        <th>Terakhir Diperbarui</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            var anchorId = $"gw-GW-{item.Id:000}";
+                            <tr id="@anchorId">
+                                <td>@item.Id</td>
+                                <td>@item.Name</td>
+                                <td>
+                                    @if (string.IsNullOrEmpty(item.IpAddress))
+                                    {
+                                        <span class="text-muted fst-italic">Kosong</span>
+                                    }
+                                    else
+                                    {
+                                        @item.IpAddress
+                                    }
+                                </td>
+                                <td><code>@item.Topic</code></td>
+                                <td>
+                                    @if (item.Status == "ONLINE")
+                                    {
+                                        <span class="badge bg-success">ONLINE</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">OFFLINE</span>
+                                    }
+                                </td>
+                                <td>@item.UpdatedAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center">Tidak ada data gateway.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <script type="module" src="~/js/main.js"></script>

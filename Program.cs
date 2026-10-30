@@ -1,8 +1,29 @@
+using Gateway_Dantotsuline.Models;
+using Microsoft.Extensions.Options;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddHttpClient();
+
+// Timeout pendek: kalau host API tidak terjangkau, jangan biarkan halaman tertahan lama.
+builder.Services.AddHttpClient("GatewayApi", (services, client) =>
+{
+    var api = services.GetRequiredService<IOptions<GatewayApiOptions>>().Value;
+    client.Timeout = TimeSpan.FromSeconds(Math.Max(1, api.TimeoutSeconds));
+});
+
+// Konfigurasi API gateway eksternal (BaseUrl, path, token).
+builder.Services.Configure<GatewayApiOptions>(
+    builder.Configuration.GetSection(GatewayApiOptions.SectionName));
+
+// Kompatibilitas ke belakang: kalau GatewayApi:Token kosong, pakai key lama "TOKEN"
+// (mis. dari environment variable TOKEN).
+builder.Services.PostConfigure<GatewayApiOptions>(options =>
+{
+    if (string.IsNullOrWhiteSpace(options.Token))
+        options.Token = builder.Configuration["TOKEN"];
+});
 
 var app = builder.Build();
 

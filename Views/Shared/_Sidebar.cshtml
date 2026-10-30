@@ -1,0 +1,45 @@
+    @{
+        var controller = ViewContext.RouteData.Values["controller"] as string;
+        var action = ViewContext.RouteData.Values["action"] as string;
+
+        string ItemClass(string targetController, string targetAction)
+        {
+            var active = string.Equals(controller, targetController, StringComparison.OrdinalIgnoreCase)
+                && string.Equals(action, targetAction, StringComparison.OrdinalIgnoreCase);
+            return active ? "app-nav__item is-active" : "app-nav__item";
+        }
+    }
+    <aside class="app-sidebar" id="app-sidebar" aria-label="Navigasi utama">
+        <div class="app-sidebar__inner">
+            <div class="app-sidebar__brand">
+                <span class="app-sidebar__logo" aria-hidden="true">GD</span>
+                <span class="app-sidebar__brand-text">
+                    <strong>Gateway</strong>
+                    <small>Dantotsuline</small>
+                </span>
+            </div>
+
+            <nav class="app-nav" aria-label="Menu utama">
+                <a class="@ItemClass("Home", "Index")" asp-area="" asp-controller="Home" asp-action="Index">
+                    <span class="app-nav__label">Home</span>
+                </a>
+                <a class="@ItemClass("Gateway", "Index")" asp-area="" asp-controller="Gateway" asp-action="Index">
+                    <span class="app-nav__label">Gateway</span>
+                </a>
+                <a class="@ItemClass("Gateway", "Editor")" asp-area="" asp-controller="Gateway" asp-action="Editor">
+                    <span class="app-nav__label">Gateway Editor</span>
+                </a>
+                <a class="@ItemClass("Home", "Privacy")" asp-area="" asp-controller="Home" asp-action="Privacy">
+                    <span class="app-nav__label">Privacy</span>
+                </a>
+            </nav>
+        </div>
+
+        <button type="button" class="app-sidebar__toggle" id="app-sidebar-toggle"
+                aria-controls="app-sidebar" aria-expanded="true" aria-label="Sembunyikan menu">
+            <svg viewBox="0 0 24 48" width="24" height="48" aria-hidden="true" focusable="false">
+                <polygon class="app-sidebar__toggle-shape" points="23,1 1,14 1,34 23,47" />
+                <path class="app-sidebar__toggle-chevron" d="M14.5 18 L9.5 24 L14.5 30" />
+            </svg>
+        </button>
+    </aside>
